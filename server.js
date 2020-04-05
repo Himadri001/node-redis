@@ -6,7 +6,8 @@ const redis = require('redis')
 const app = express()
  
 // create and connect redis client to local instance.
-const client = redis.createClient(6379)
+const client = redis.createClient(6379);
+const port = process.env.PORT || 3000;
  
 // echo redis errors to the console
 client.on('error', (err) => {
@@ -117,6 +118,6 @@ app.get('/fakeJson_comment', (req, res) => {
 });
  
 // start express server at 3000 port
-app.listen(3000, () => {
-    console.log('Server listening on port: ', 3000)
+app.listen(port, () => {
+    console.log('Server listening on port: '+ port)
 });
